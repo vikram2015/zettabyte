@@ -1,0 +1,28 @@
+<div class="container">
+  <form name="imageForm" style="margin-bottom: 50px;">
+    <div>
+      <button type="submit" value="submit" class="btn btn-success" style="width: 100px; margin-left: 1012px; margin-top: 50px;"(click)="goBack()">Back</button>
+    </div>
+    <hr>
+    <fieldset>
+      <h5>
+        <u style="margin-left: 50px;"> User Details :</u>
+      </h5>
+      <br>
+      <div class="form-group">
+        <label for="imageName"><b>Image Name</b></label>
+        <input type="text" class="form-control" id="imageName" name="imageName" [(ngModel)]="formData.image_name">
+      </div>
+      <div class="form-group">
+        <label for="image_type"><b>Image Type</b></label>
+        <input type="text" class="form-control" id="image_type" name="image_type" [(ngModel)]="formData.image_type">
+      </div>
+      <div class="form-group">
+        <label for="image"><b>Image</b></label>
+        <input type="text" class="form-control" id="image" name="image" [(ngModel)]="formData.image">
+      </div>
+    </fieldset>
+    <br>
+    <button type="submit" style="width: 100px; margin-top: 20px;" class="btn btn-primary" (click)="updateUserDetails()">Submit</button>
+  </form>
+</div>

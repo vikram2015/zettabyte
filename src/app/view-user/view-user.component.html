@@ -1,0 +1,54 @@
+<div class="container">
+  <form name="userForm" style="margin-bottom: 50px;">
+    <div>
+      <button type="submit" value="submit" class="btn btn-success" style="width: 100px; margin-left: 1012px; margin-top: 50px;"
+        (click)="goBack()">Back</button>
+    </div>
+    <hr>
+    <fieldset>
+      <h5>
+        <u style="margin-left: 50px;"> User Details :</u>
+      </h5>
+      <br>
+      <div class="form-group">
+        <label for="userName"><b>User Name</b></label>
+        <input type="text" class="form-control" id="userName" name="userName" [(ngModel)]="formData.userName" [disabled]="true">
+      </div>
+      <div class="form-group">
+        <label for="UserId"><b>Email</b></label>
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formData.email" [disabled]="true">
+      </div>
+    </fieldset>
+    <br>
+    <fieldset>
+      <h5>
+        <u style="margin-left: 50px;"> Address :</u>
+      </h5>
+      <br>
+      <div class="form-group">
+        <label for="adress"><b>Line 1</b></label>
+        <input type="text" class="form-control" id="line1" [disabled]="true" name="line1" [(ngModel)]="formData.userAdress.line1" >
+      </div>
+      <div class="form-group">
+        <label for="adress"><b>Line 2</b></label>
+        <input type="text" class="form-control" id="line2" name="line2" [(ngModel)]="formData.userAdress.line2" [disabled]="true">
+      </div>
+      <div class="form-group">
+        <label for="adress"><b>City</b></label>
+        <input type="text" class="form-control" id="city" name="v" [(ngModel)]="formData.userAdress.city" [disabled]="true">
+      </div>
+      <div class="form-group">
+        <label for="adress"><b>Country</b></label>
+        <input type="text" class="form-control" id="country" name="country" [(ngModel)]="formData.userAdress.country" [disabled]="true">
+      </div>
+      <div class="form-group">
+        <label for="adress"><b>State</b></label>
+        <input type="text" class="form-control" id="state" name="state" [(ngModel)]="formData.userAdress.state" [disabled]="true">
+      </div>
+      <div class="form-group">
+        <label for="adress"><b>Pin Code</b></label>
+        <input type="number" class="form-control" id="pincode" name="pincode" [(ngModel)]="formData.userAdress.pincode" [disabled]="true">
+      </div>
+    </fieldset>
+  </form>
+</div>
