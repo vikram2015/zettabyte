@@ -1,0 +1,19 @@
+<div class="container">
+
+<form>
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" class="form-control" required ngModel name="firstName" #firstName="ngModel" (change)="log()" id="firstName"  placeholder="First Name">
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">First Name is Required</div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea type="text" class="form-control" id="comment"  placeholder="Comment"></textarea>
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="clickAct()">Submit</button>
+</form>
+</div>

@@ -1,0 +1,116 @@
+<div class="container">
+
+  <form [formGroup]="myForm" style="margin-top: 20px;">
+   
+    Value: {{ myForm.value | json }}
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input type="text" class="form-control" formControlName="email" placeholder="Email">
+      <div class="has text-danger" *ngIf="myForm.controls['email'].invalid && (myForm.controls['email'].touched)">
+        <div [hidden]="!myForm.controls['email'].errors.required">
+          Email Is Required
+        </div>
+        <div [hidden]="!myForm.controls['email'].errors.email">
+          Email Is Wrong
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password :</label>
+      <input type="password" class="form-control" formControlName="password" placeholder="Password">
+      <div class="has text-danger" *ngIf="myForm.controls['password'].invalid && (myForm.controls['password'].touched)">
+        <div [hidden]="!myForm.controls['password'].errors.required">
+          Password Is Required
+        </div>
+        <div [hidden]="!myForm.controls['password'].errors.minlength">
+          Min length must be greater than 3
+        </div>
+        <div [hidden]="!myForm.controls['password'].errors.pattern">
+          Min 8 and max 16 in which min one Lower one Upper and one Number
+        </div>
+      </div>
+    </div>
+
+    <h4>Add Contacts :</h4>
+    <div formArrayName="cellPhone">
+      <div *ngFor="let phone of phoneForms.controls; let i = index;" [formGroupName]="i">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="resid">{{i+1}}. Residential</label>
+              <input type="number" class="form-control" formControlName="resid" placeholder="Residential">
+              <div class="has text-danger" >
+<!--
+                <div [hidden]="!myForm.controls['resid'].errors.minlength">
+                  The Minimum Length Should Be 10
+                </div>
+-->
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="mobile">{{i+1}}. Mobile</label>
+              <input type="number" class="form-control" formControlName="mobile" placeholder="Mobile">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-danger" (click)="deletePhone(i)" style="margin-top: 120px; margin-bottom: 18px;">Delete Phone</button>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="addPhone()">Add Contact Number</button>
+
+
+
+    <div style="margin-top: 20px;">
+    <h4>Add Address :</h4>
+    <div formArrayName="address" >
+      <div *ngFor="let adress of AdressList.controls; let in = index;" [formGroupName]="in">
+        <div class="row">
+          <legend>Adress {{in+1}}</legend>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="line1">Line 1 :</label>
+              <input type="text" class="form-control" formControlName="line1" placeholder="Line 1">
+            </div>
+            <div class="form-group">
+              <label for="line2">Line 2 :</label>
+              <input type="text" class="form-control" formControlName="line2" placeholder="Line 2">
+            </div>
+            <div class="form-group">
+              <label for="district">District :</label>
+              <input type="text" class="form-control" formControlName="district" placeholder="District">
+            </div>
+            <div class="form-group">
+              <label for="state">State :</label>
+              <input type="text" class="form-control" formControlName="state" placeholder="State">
+            </div>
+            <div class="form-group">
+              <label for="country">Country :</label>
+              <input type="text" class="form-control" formControlName="country" placeholder="Country">
+            </div>
+            <div class="row">
+              <div class="form-group" style="margin-left: 20px;">
+                <label for="pincode">PinCode :</label>
+                <input type="number" class="form-control" formControlName="pincode" placeholder="PinCode" style="width: 400px;">
+              </div>
+              <button type="submit" class="btn btn-danger" style="margin-bottom: 15px; margin-top: 30px; margin-left: 20px;" (click)="deleteAdress(in)">Delete Adress</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="addAdress()">Add Adress</button>
+    </div>
+
+    <div class="form-group form-check" style="margin-top: 20px;">
+      <input type="checkbox" class="form-check-input" formControlName="agree" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">I Agree</label>
+    </div>
+
+     <div class="row" style="float: right; margin-right: 5px; margin-top: 20px;">
+      <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid" (click)="clickAct()" style="margin-right: 20px;">Submit</button>
+      <button type="submit" class="btn btn-primary" (click)="clearRecord()">Clear</button>
+    </div>
+
+  </form>
+</div>

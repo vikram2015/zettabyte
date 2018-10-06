@@ -1,44 +1,69 @@
 import { Injectable } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule , FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType, HttpRequest, HttpErrorResponse, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
 import 'rxjs/add/operator/map';
 
+
+const uri = "http://localhost:3200/image/saveNewImage";
 @Injectable()
 export class ImageService {
 
+   uploader:FileUploader = new FileUploader({url:uri});
+
   fileDetails :File =null;
 
+  yourHeadersConfig:any
   imageDetails  = {};
 
-  constructor(private _http: Http) { }
+  constructor(private _http: HttpClient) { }
 
 
   getImage(){
     return this._http.get('/image/getTotalImage' ).map(function (data) {
-      var newData = data.json();
-      return newData;
+      // var newData = data.json();
+      // return newData;
     });
   }
 
   deleteImage(parameter){
     return this._http.post('/image/deleteImage',parameter ).map(function (data) {
-      var newData = data.json();
-      return newData;
+      // var newData = data.json();
+      // return newData;
     });
   }
   updateImage(parameter){
     console.log('parameter in image services')
     console.log(parameter)
     return this._http.post('/image/updateImage',parameter ).map(function (data) {
-      var newData = data.json();
-      return newData;
+      // var newData = data.json();
+      // return newData;
     });
   }
+  attachmentList:any=[];
 
-saveNewImage(image,file){
+saveNewImage(file : File){
+
+  console.log(file)
+  let data = "this is demo"
+  // console.log(file)
+  // const endpoint = '/image/saveNewImage';
+    let formData: FormData = new FormData();
+    // formData.append('fileKey', file, file.name);
+    formData.append('fileKey', file, file.name);
+    console.log("formData")
+    console.log(formData)
+    console.log(file.name)
+    return this._http.post('/image/saveNewImage', data)
+      .map(function(data){
+
+      })
+      // .catch((e) => this.handleError(e));
+  // this.uploader.onCompleteItem = (item:any, response:any, status:any, header:any)=>{
+  //     this.attachmentList.push(JSON.parse(response));
+  //   }
  
   // let headers = new Headers();
   //   let formData:FormData = new FormData();
@@ -71,12 +96,12 @@ saveNewImage(image,file){
   // console.log(this.fileDetails)
   // const fd = new FormData();
   // fd.append('image', this.fileDetails, this.fileDetails.name);
-  let newFile = JSON.stringify(file);
-  console.log(newFile)
-    return this._http.post('/image/saveNewImage',newFile ).map(function (data) {
-      var newData = data.json();
-      return newData;
-    });
+  // let newFile = JSON.stringify(file);
+  // console.log(newFile)
+  //   return this._http.post('/image/saveNewImage',newFile ).map(function (data) {
+  //     var newData = data.json();
+  //     return newData;
+  //   });
   }
 
 

@@ -34,24 +34,26 @@ deleteImage(image, i) {
     let imageId = {
       _id: image._id
     };
-    this._imageService.deleteImage(imageId).subscribe((data) => {
-      console.log(data)
-      if (data.success) {
-        this.imageRecord.splice(i, 1);
-      }
-    });
+    this._imageService.deleteImage(imageId)
+    // .subscribe((data) => {
+    //   console.log(data)
+    //   if (data.success) {
+    //     this.imageRecord.splice(i, 1);
+    //   }
+    // });
   };
 
 
 
   ngOnInit() {
-    this._imageService.getImage().subscribe((data) => {
-      if (data.success) {
-        for (var i = 0; i < data.Image.length; i++) {
-          this.imageRecord.push(data.Image[i]);
-        }
-      }
-    })
+    this._imageService.getImage()
+    // .subscribe((data) => {
+    //   if (data.success) {
+    //     for (var i = 0; i < data.Image.length; i++) {
+    //       this.imageRecord.push(data.Image[i]);
+    //     }
+    //   }
+    // })
   }
 
 }

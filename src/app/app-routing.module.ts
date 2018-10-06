@@ -9,6 +9,10 @@ import { AddNewUserComponent } from './add-new-user/add-new-user.component';
 import { ImageComponent } from './image/image.component';
 import { AddNewImageComponent } from './add-new-image/add-new-image.component';
 import { UpdateImageComponent } from './update-image/update-image.component';
+import { AddImageComponent } from './add-image/add-image.component';
+import { AddImgComponent } from './add-img/add-img.component';
+import { TestingFormComponent } from './testing-form/testing-form.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 
 
@@ -22,6 +26,10 @@ const routes: Routes = [
   { path: 'image', component: ImageComponent },
   { path: 'createimage', component: AddNewImageComponent },
   { path: 'updateimage', component: UpdateImageComponent },
+  { path: 'addImg', component: AddImageComponent },
+  { path: 'addImag', component: AddImgComponent },
+  { path: 'formTest', component: TestingFormComponent },
+  { path: 'reactiveForm', component: ReactiveFormComponent },
   
 //   { path: 'contacts/add', component: addContactsComponent },
   

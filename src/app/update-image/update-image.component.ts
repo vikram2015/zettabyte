@@ -26,11 +26,12 @@ export class UpdateImageComponent implements OnInit {
 
 
   updateUserDetails(){
-    this._imageService.updateImage(this.formData).subscribe((data) => {
-      if (data.success) {
-        this._router.navigateByUrl('image');
-      }
-    })
+    this._imageService.updateImage(this.formData)
+    // .subscribe((data) => {
+    //   if (data.success) {
+    //     this._router.navigateByUrl('image');
+    //   }
+    // })
   }
 
   goBack(){

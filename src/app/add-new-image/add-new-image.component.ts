@@ -16,7 +16,7 @@ export class AddNewImageComponent implements OnInit {
 
   form: FormGroup;
   formData = {};
-  myFile = {};
+  myFile : File = null;
 
   constructor(private _imageService: ImageService, private _router: Router) { }
 
@@ -49,13 +49,15 @@ export class AddNewImageComponent implements OnInit {
     console.log(this.formData)
     console.log("this.myFile")
     console.log(this.myFile)
-    this._imageService.saveNewImage(this.formData,this.myFile).subscribe((data) => {
-      if (data.success) {
-        this._router.navigateByUrl('image');
-      } else {
-        alert(data.MSG)
-      }
-    });
+    this._imageService.saveNewImage(this.myFile)
+    // .subscribe((data) => {
+    //   if (data.success) {
+    //     this._router.navigateByUrl('image');
+    //   } else {
+    //     alert(data.MSG)
+    //   }
+    // }
+  // );
   }
 
 

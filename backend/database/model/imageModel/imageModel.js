@@ -1,10 +1,7 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 let ImageSchema = new Schema({
-    _id: {
-        type: Object,
-        required: true
-    },
+    
     image_name: {
         type: String,
         required: false
@@ -17,9 +14,13 @@ let ImageSchema = new Schema({
         type: Date,
         required: false
     },
-    image: {
-        type: String,
+    image_meta_data: {
+        type: Object,
         required: true
+    },
+    image_path:{
+        type:String,
+        required:true
     },
     isTrue:{
         type:Boolean,
